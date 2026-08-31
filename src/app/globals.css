@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0d1120;
+  --foreground: #f3ecdd;
+
+  --ink: #0d1120;
+  --dusk: #131a30;
+  --dusk-soft: #1a2340;
+  --hairline: rgba(226, 200, 138, 0.14);
+  --cream: #f3ecdd;
+  --parchment: #e7dcbe;
+  --muted: #a6adc6;
+
+  --gold: #cda355;
+  --gold-bright: #ecc272;
+  --ember: #b8542f;
+  --ember-bright: #dd6f42;
+  --dawn: #e8a86b;
+  --royal: #3a4d8f;
+  --royal-bright: #5f77c9;
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-dusk: var(--dusk);
+  --color-dusk-soft: var(--dusk-soft);
+  --color-hairline: var(--hairline);
+  --color-cream: var(--cream);
+  --color-parchment: var(--parchment);
+  --color-muted: var(--muted);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-ember: var(--ember);
+  --color-ember-bright: var(--ember-bright);
+  --color-dawn: var(--dawn);
+  --color-royal: var(--royal);
+  --color-royal-bright: var(--royal-bright);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
+}
+
+* {
+  border-color: var(--hairline);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.font-serif-display {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* Fine film-grain, applied on a ::before so it never blocks pointer events */
+.bg-grain {
+  position: relative;
+}
+.bg-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Ornamental section divider — a thin gold hairline with a rotated diamond,
+   evokes an illuminated manuscript mark without being literal/kitsch. */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+}
+.ornament::before,
+.ornament::after {
+  content: "";
+  height: 1px;
+  width: 44px;
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+  opacity: 0.6;
+}
+.ornament-mark {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background: var(--gold);
+  opacity: 0.85;
+}
+
+/* Editorial pull-quote */
+.pull-quote {
+  position: relative;
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  line-height: 1.35;
+}
+.pull-quote::before {
+  content: "\201C";
+  position: absolute;
+  left: -0.05em;
+  top: -0.3em;
+  font-size: 2.6em;
+  color: var(--gold);
+  opacity: 0.35;
+  font-style: normal;
+}
+
+.glow-gold {
+  background: radial-gradient(circle, rgba(205, 163, 85, 0.28), transparent 70%);
+}
+.glow-royal {
+  background: radial-gradient(circle, rgba(63, 82, 158, 0.32), transparent 70%);
+}
+.glow-ember {
+  background: radial-gradient(circle, rgba(184, 84, 47, 0.28), transparent 70%);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up {
+    animation: none;
+  }
+}

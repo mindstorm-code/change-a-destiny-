@@ -1,0 +1,35 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# local waitlist store (dev/demo only — swap for a real CRM/ESP before launch)
+/.data
+
+# raw AI-generated source images (originals, unoptimized — processed
+# versions live in public/images/*.jpg via scripts/process-images.mjs)
+/public/images/source
+
+# original (pre-re-encode) video files, kept locally as a backup only
+/public/videos/original
