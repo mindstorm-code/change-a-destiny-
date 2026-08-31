@@ -31,15 +31,15 @@ export const CHAPTERS: Chapter[] = [
   {
     kicker: "Power",
     title: "Real change was never a matter of willpower.",
-    body: "Fifty years of clinical practice taught Judah what discipline alone can't do. The framework works because something greater than willpower is doing the actual healing.",
+    body: "You don't need more willpower. You need something greater than willpower working underneath you — a real clinical framework, not another self-help slogan. That's what actually carries you from knowing to becoming.",
     tint: "rgba(168, 108, 40, 0.3)",
     fog: [0.4, 0.32, 0.3],
     photo: "/images/power.jpg",
   },
   {
     kicker: "The Path",
-    title: "Fifty years, distilled into a discipline.",
-    body: "A licensed therapist and an ordained minister, in one voice: name the hurt, walk the practice, become whole — daily, not theoretically.",
+    title: "This becomes your daily discipline.",
+    body: "Not a weekend high you chase again next month. A framework you actually walk — name the hurt, practice the discipline, become whole. Daily, not theoretically.",
     tint: "rgba(240, 197, 120, 0.24)",
     fog: [0.6, 0.46, 0.24],
     photo: "/images/hero-walking.jpg",

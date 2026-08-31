@@ -53,11 +53,9 @@ function StaticHero() {
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
         <div className="relative z-10 mx-auto max-w-xl px-6 pb-14 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-gold-bright">
-            {chapter.kicker}
-          </p>
-          <h1 className="mt-3 font-serif-display text-3xl leading-tight text-cream text-balance sm:text-5xl">
-            {chapter.title}
+          <h1 className="font-serif-display text-3xl leading-[1.15] text-cream text-balance sm:text-5xl">
+            Passion, Purpose, Power
+            <span className="block italic text-gold-bright">and The Path.</span>
           </h1>
         </div>
       </div>
@@ -246,17 +244,26 @@ function ScrollHero() {
           opacityRef={opacity2}
         />
 
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/30" />
+        {/* Stronger scrim, weighted toward the bottom where text sits, so
+            the chapter copy stays legible against any part of the video. */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/15 to-ink/45" />
+
+        {/* Small brand mark, bottom-right — also covers the AI-generator
+            watermark burned into that corner of both source clips. */}
+        <div className="pointer-events-none absolute bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full bg-ink/70 backdrop-blur-sm sm:bottom-7 sm:right-7">
+          <Image src="/images/logo-mark.png" alt="" width={22} height={22} className="opacity-90" />
+        </div>
 
         <div className="absolute inset-x-0 bottom-24 flex justify-center px-6 sm:bottom-28 sm:justify-start sm:pl-16">
           <AnimatePresence mode="wait">
+            {!showCue && (
             <motion.div
               key={chapterIndex}
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-md text-center sm:text-left"
+              className="max-w-md rounded-2xl bg-ink/55 p-5 text-center backdrop-blur-md sm:p-6 sm:text-left"
             >
               <p className="text-xs font-semibold uppercase tracking-[0.32em] text-gold-bright">
                 {chapter.kicker}
@@ -264,10 +271,11 @@ function ScrollHero() {
               <h2 className="mt-3 font-serif-display text-2xl leading-tight text-cream text-balance sm:text-4xl">
                 {chapter.title}
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-cream/80 sm:text-base">
+              <p className="mt-3 text-sm leading-relaxed text-cream sm:text-base">
                 {chapter.body}
               </p>
             </motion.div>
+            )}
           </AnimatePresence>
         </div>
 
@@ -289,16 +297,26 @@ function ScrollHero() {
           )}
         </AnimatePresence>
 
+        {/* Opening title card — the framework name itself is the headline
+            of the whole experience, shown large before the first chapter
+            beat takes over as the user starts scrolling. */}
         <AnimatePresence>
           {showCue && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-x-0 top-8 flex flex-col items-center gap-1 text-muted sm:top-auto sm:bottom-8"
+              transition={{ duration: 0.4 }}
+              className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
             >
-              <span className="text-[11px] uppercase tracking-[0.28em]">Scroll to walk the path</span>
-              <ChevronDown size={16} className="animate-bounce" />
+              <h1 className="font-serif-display text-3xl leading-[1.15] text-cream text-balance sm:text-6xl">
+                Passion, Purpose, Power
+                <span className="block italic text-gold-bright">and The Path.</span>
+              </h1>
+              <div className="mt-10 flex flex-col items-center gap-1 text-muted">
+                <span className="text-[11px] uppercase tracking-[0.28em]">Scroll to begin</span>
+                <ChevronDown size={16} className="animate-bounce" />
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
