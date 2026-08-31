@@ -57,7 +57,7 @@ export default function HomePage() {
         <div className="relative mx-auto grid max-w-6xl gap-14 px-6 py-24 sm:py-28 lg:grid-cols-[1.3fr_1fr]">
           <div>
             <Kicker>Before the pitch</Kicker>
-            <h1 className="font-serif-display text-3xl leading-[1.15] text-cream text-balance sm:text-5xl">
+            <h1 className="font-display text-3xl leading-[1.15] text-cream text-balance sm:text-5xl">
               If church gave you truth without tools, and therapy gave you tools
               without truth &mdash; this is the place those two finally meet.
             </h1>
@@ -103,24 +103,41 @@ export default function HomePage() {
         />
         <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-6 py-24 sm:py-28 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="relative mx-auto w-full max-w-[280px]">
-            <div className="glow-gold pointer-events-none absolute h-72 w-72 -translate-x-6 -translate-y-6 blur-3xl" />
-            <div className="relative aspect-[2/3] w-full rounded-lg bg-gradient-to-br from-[#e8c68a] via-[#cda355] to-[#8a5a2e] p-6 shadow-2xl shadow-black/40">
-              <div className="flex h-full flex-col justify-between rounded-sm border border-ink/20 p-4 text-ink">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.28em]">
+            <div className="glow-royal pointer-events-none absolute h-72 w-72 -translate-x-6 -translate-y-6 blur-3xl" />
+            <div className="relative aspect-[2/3] w-full overflow-hidden rounded-lg bg-gradient-to-b from-[#1f3b64] via-[#16233d] to-[#0e1522] p-6 shadow-2xl shadow-black/40">
+              {/* Simple mountain-ridge silhouette — a nod to the real
+                  cover's photography, not a reproduction of it. */}
+              <svg
+                viewBox="0 0 280 420"
+                className="absolute inset-x-0 bottom-0 h-1/2 w-full opacity-25"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M0 420 L0 260 L50 180 L90 230 L140 100 L190 220 L230 160 L280 260 L280 420 Z"
+                  fill="#8a9a5b"
+                />
+              </svg>
+              <div className="relative flex h-full flex-col justify-between p-1 text-cream">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-gold-bright">
                   Judah Becker
                 </p>
-                <p className="font-serif-display text-2xl leading-tight italic">
-                  The Path
-                  <span className="mt-1 block text-sm not-italic">Transformative Living</span>
-                </p>
-                <p className="text-[10px] uppercase tracking-[0.2em]">Book One</p>
+                <div>
+                  <p className="font-display text-4xl uppercase leading-[0.9] tracking-tight">
+                    The<br />Path
+                  </p>
+                  <span className="mt-2 block text-xs uppercase tracking-[0.28em] text-gold-bright">
+                    Transformative Living
+                  </span>
+                </div>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-muted">Book One</p>
               </div>
             </div>
           </div>
 
           <div>
             <Kicker>Step one · $9.10</Kicker>
-            <h2 className="font-serif-display text-3xl leading-tight text-cream text-balance sm:text-4xl">
+            <h2 className="font-display text-3xl leading-tight text-cream text-balance sm:text-4xl">
               77 pages. Two hours. Enough to know if this framework is for you.
             </h2>
             <p className="mt-5 max-w-lg text-base leading-relaxed text-muted">
@@ -181,7 +198,7 @@ export default function HomePage() {
                       Core offer
                     </p>
                   )}
-                  <h3 className="font-serif-display text-xl text-cream">{tier.name}</h3>
+                  <h3 className="font-display text-xl text-cream">{tier.name}</h3>
                   <p className="mt-1 text-sm text-muted">{tier.tagline}</p>
                 </div>
                 <ul className="flex-1 space-y-1.5 text-sm text-cream/85">
@@ -192,7 +209,7 @@ export default function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <p className="font-serif-display text-2xl text-gold-bright sm:w-32 sm:text-right">
+                <p className="font-display text-2xl text-gold-bright sm:w-32 sm:text-right">
                   {tier.price}
                 </p>
               </div>
@@ -271,7 +288,7 @@ export default function HomePage() {
           <div className="mt-10 divide-y divide-hairline">
             {FAQ.map((item) => (
               <details key={item.q} className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif-display text-lg text-cream marker:content-none">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg text-cream marker:content-none">
                   {item.q}
                   <span className="text-muted transition-transform group-open:rotate-45">+</span>
                 </summary>
@@ -286,7 +303,7 @@ export default function HomePage() {
       <section className="bg-grain relative">
         <div className="glow-ember pointer-events-none absolute bottom-0 left-1/2 h-80 w-[520px] -translate-x-1/2 blur-3xl" />
         <div className="relative mx-auto max-w-2xl px-6 py-24 text-center sm:py-28">
-          <h2 className="font-serif-display text-3xl text-cream text-balance sm:text-4xl">
+          <h2 className="font-display text-3xl text-cream text-balance sm:text-4xl">
             The path doesn&rsquo;t get easier by waiting.
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted text-balance">

@@ -30,7 +30,7 @@ export function SectionHeading({
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-2xl"}>
       {kicker && <Kicker>{kicker}</Kicker>}
-      <h2 className="font-serif-display text-3xl leading-[1.15] text-cream text-balance sm:text-[2.75rem]">
+      <h2 className="font-display text-3xl leading-[1.15] text-cream text-balance sm:text-[2.75rem]">
         {title}
       </h2>
       {subtitle && (
@@ -57,7 +57,7 @@ export function Stat({
 }) {
   return (
     <div className="border-l border-hairline pl-5">
-      <p className="font-serif-display text-3xl text-gold-bright sm:text-4xl">{value}</p>
+      <p className="font-display text-3xl text-gold-bright sm:text-4xl">{value}</p>
       <p className="mt-1.5 text-sm leading-snug text-muted">{label}</p>
     </div>
   );

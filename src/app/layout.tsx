@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Inter, Oswald } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
@@ -9,10 +9,12 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+// Bold condensed display face — matches the real book cover's rugged,
+// heavy-weight wordmark far better than an elegant literary serif does.
+const oswald = Oswald({
+  variable: "--font-oswald",
   subsets: ["latin"],
-  style: ["normal", "italic"],
+  weight: ["500", "600", "700"],
 });
 
 const title = "The Path: Transformative Living | Judah Becker";
@@ -46,7 +48,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${fraunces.variable} antialiased`}>
+      <body className={`${inter.variable} ${oswald.variable} antialiased`}>
         <NavBar />
         {children}
         <Footer />

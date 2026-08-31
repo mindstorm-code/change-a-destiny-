@@ -73,7 +73,7 @@ export function PathAssessment() {
         <p className="text-xs font-semibold uppercase tracking-[0.32em] text-gold-bright">
           Your result
         </p>
-        <h3 className="mt-3 font-serif-display text-2xl text-cream sm:text-3xl">{result.title}</h3>
+        <h3 className="mt-3 font-display text-2xl text-cream sm:text-3xl">{result.title}</h3>
         <p className="mt-3 max-w-lg text-base leading-relaxed text-muted">{result.body}</p>
         <div className="mt-6 flex flex-wrap items-center gap-4">
           <a
@@ -108,7 +108,7 @@ export function PathAssessment() {
       <p className="mt-6 text-xs font-semibold uppercase tracking-[0.28em] text-gold-bright">
         Question {step + 1} of {QUESTIONS.length}
       </p>
-      <h3 className="mt-3 font-serif-display text-xl text-cream sm:text-2xl">{q.prompt}</h3>
+      <h3 className="mt-3 font-display text-xl text-cream sm:text-2xl">{q.prompt}</h3>
       <div className="mt-6 space-y-3">
         {q.options.map((opt) => (
           <button

@@ -53,7 +53,7 @@ function StaticHero() {
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
         <div className="relative z-10 mx-auto max-w-xl px-6 pb-14 text-center">
-          <h1 className="font-serif-display text-3xl leading-[1.15] text-cream text-balance sm:text-5xl">
+          <h1 className="font-display text-3xl leading-[1.15] text-cream text-balance sm:text-5xl">
             Passion, Purpose, Power
             <span className="block italic text-gold-bright">and The Path.</span>
           </h1>
@@ -66,7 +66,7 @@ function StaticHero() {
             <p className="text-xs font-semibold uppercase tracking-[0.32em] text-gold-bright">
               {c.kicker}
             </p>
-            <h2 className="mt-2 font-serif-display text-2xl text-cream text-balance sm:text-3xl">
+            <h2 className="mt-2 font-display text-2xl text-cream text-balance sm:text-3xl">
               {c.title}
             </h2>
             <p className="mt-2 text-base leading-relaxed text-muted">{c.body}</p>
@@ -268,7 +268,7 @@ function ScrollHero() {
               <p className="text-xs font-semibold uppercase tracking-[0.32em] text-gold-bright">
                 {chapter.kicker}
               </p>
-              <h2 className="mt-3 font-serif-display text-2xl leading-tight text-cream text-balance sm:text-4xl">
+              <h2 className="mt-3 font-display text-2xl leading-tight text-cream text-balance sm:text-4xl">
                 {chapter.title}
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-cream sm:text-base">
@@ -309,9 +309,9 @@ function ScrollHero() {
               transition={{ duration: 0.4 }}
               className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
             >
-              <h1 className="font-serif-display text-3xl leading-[1.15] text-cream text-balance sm:text-6xl">
+              <h1 className="font-display text-3xl leading-[1.15] text-cream text-balance sm:text-6xl">
                 Passion, Purpose, Power
-                <span className="block italic text-gold-bright">and The Path.</span>
+                <span className="block text-gold-bright">and The Path.</span>
               </h1>
               <div className="mt-10 flex flex-col items-center gap-1 text-muted">
                 <span className="text-[11px] uppercase tracking-[0.28em]">Scroll to begin</span>

@@ -6,7 +6,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-12 text-sm text-muted">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-sm">
-            <p className="font-serif-display text-lg italic text-cream">The Path</p>
+            <p className="font-display text-lg uppercase tracking-wide text-cream">The Path</p>
             <p className="mt-2 text-xs leading-relaxed text-muted">
               Judah Becker &mdash; Messianic minister, licensed counseling therapist, and
               founder of Change A Destiny.

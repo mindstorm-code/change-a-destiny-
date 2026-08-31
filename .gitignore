@@ -33,3 +33,5 @@ next-env.d.ts
 
 # original (pre-re-encode) video files, kept locally as a backup only
 /public/videos/original
+
+.vercel

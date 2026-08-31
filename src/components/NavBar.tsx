@@ -31,7 +31,7 @@ export function NavBar() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
         <Link href="/" className="flex items-baseline gap-2" onClick={() => setOpen(false)}>
-          <span className="font-serif-display text-xl italic text-cream">The Path</span>
+          <span className="font-display text-xl uppercase tracking-wide text-cream">The Path</span>
         </Link>
 
         <nav className="hidden items-center gap-9 md:flex">

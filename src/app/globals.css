@@ -7,21 +7,25 @@
   --ink: #0d1120;
   --dusk: #131a30;
   --dusk-soft: #1a2340;
-  --hairline: rgba(226, 200, 138, 0.14);
+  --hairline: rgba(163, 186, 122, 0.16);
   --cream: #f3ecdd;
   --parchment: #e7dcbe;
   --muted: #a6adc6;
 
-  --gold: #cda355;
-  --gold-bright: #ecc272;
+  /* Moss/olive green — the real book cover's primary accent (matches its
+     "FAITH", "PURPOSE" callout-word color) */
+  --gold: #8a9a5b;
+  --gold-bright: #b4c37e;
   --ember: #b8542f;
   --ember-bright: #dd6f42;
   --dawn: #e8a86b;
-  --royal: #3a4d8f;
-  --royal-bright: #5f77c9;
+  /* Deep navy blue — the cover's title-wordmark color, used as the
+     secondary accent */
+  --royal: #2f4a7a;
+  --royal-bright: #5b7fc4;
 
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-fraunces);
+  --font-display: var(--font-oswald);
 }
 
 @theme inline {
@@ -42,7 +46,7 @@
   --color-royal: var(--royal);
   --color-royal-bright: var(--royal-bright);
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-fraunces);
+  --font-display: var(--font-oswald);
 }
 
 * {
@@ -73,8 +77,9 @@ body {
   }
 }
 
-.font-serif-display {
-  font-family: var(--font-serif), Georgia, serif;
+.font-display {
+  font-family: var(--font-display), "Arial Narrow", sans-serif;
+  letter-spacing: 0.005em;
 }
 
 .text-balance {
@@ -127,9 +132,8 @@ body {
 /* Editorial pull-quote */
 .pull-quote {
   position: relative;
-  font-family: var(--font-serif), Georgia, serif;
-  font-style: italic;
-  line-height: 1.35;
+  font-family: var(--font-display), "Arial Narrow", sans-serif;
+  line-height: 1.25;
 }
 .pull-quote::before {
   content: "\201C";
