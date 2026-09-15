@@ -46,18 +46,27 @@ primary ask — see `offer-stack.md`'s "one funnel, one job" rule).
 > [Take the Path Assessment]({{assessment_link}})
 >
 > One more thing — if you'd rather get a quick text than dig through
-> email, reply **YES** to this email to opt in to "The Path Updates,"
-> occasional SMS from Change A Destiny about the Path Assessment, the
+> email, you can opt in to "The Path Updates" here:
+> {{sms_optin_link}}
+>
+> That page asks for your mobile number and has you tick a consent box,
+> which is how we keep a record that you actually asked for the texts.
+> Occasional SMS from Change A Destiny about the Path Assessment, the
 > Founding Cohort, and our Victorious Villages mission. Message frequency
 > varies — no more than a few messages over a typical two-week period.
 > Msg & data rates may apply. This isn't required to stay on our email
-> list or to give — reply YES only if you actually want the texts. Reply
-> **STOP** at any time to opt out.
+> list or to give. Reply **STOP** at any time to opt out.
 >
 > Judah
 
-*(Twilio A2P Campaign compliance note, 2026-09-11: this is the exact
-opt-in disclosure text registered with Twilio's Campaign review —
+*(Twilio A2P compliance note, REVISED 2026-09-15. The previous version of
+this email asked people to reply YES, and said that was "the exact opt-in
+disclosure text registered with Twilio's Campaign review". That campaign
+was REJECTED on 2026-09-10, error 30898, for exactly this: a reviewer
+cannot audit an inbox, so an email-reply opt-in cannot be verified. The
+mechanism is now a hosted page with a consent box, which is what the
+resubmission points at. Keep this paragraph's substance intact if the copy
+is revised —
 program name, message frequency, rate disclosure, and no-purchase-
 condition language all included per TCR's opt-in requirements. Keep this
 paragraph's substance intact if the copy is ever revised — a mismatch
