@@ -138,7 +138,7 @@ export default function HomePage() {
               )}
             </ul>
             <a
-              href="https://amzn.to/4h7nks"
+              href="https://www.amazon.com/dp/B0HCFBDL13"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-ink transition-colors hover:bg-gold-bright"
