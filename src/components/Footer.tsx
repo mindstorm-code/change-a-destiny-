@@ -27,7 +27,11 @@ export function Footer() {
             </a>
           </nav>
         </div>
-        <p className="mt-10 text-xs text-muted/60">
+        <nav className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted/70">
+          <Link href="/privacy-policy" className="hover:text-cream">Privacy Policy</Link>
+          <Link href="/terms" className="hover:text-cream">Terms and Conditions</Link>
+        </nav>
+        <p className="mt-6 text-xs text-muted/60">
           Figures on this page are planning estimates for launch purposes, not guarantees.
         </p>
       </div>

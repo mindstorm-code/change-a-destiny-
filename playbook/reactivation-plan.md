@@ -34,8 +34,10 @@ first send goes out.
 
 ## Platform note
 
-No specific vendor is named here or in any customer-facing material.
-Whatever CRM/ESP is chosen needs: email + SMS in one system, opt-in/
-suppression fields, and pipeline stages (reader → student → partner).
-That's a procurement decision to make separately, not a design constraint
-on the site itself.
+**Chosen:** Twilio for SMS, Resend for email (2026-09-08) — see
+`scripts/reactivation/`. Neither vendor name appears in any
+customer-facing copy or email/SMS content; that principle still holds,
+this note just records the actual procurement decision. Opt-in/
+suppression fields and pipeline stages (reader → student → partner) live
+in the shared contacts store (`scripts/reactivation/contacts.example.json`
+shows the schema), not in either vendor's own UI.

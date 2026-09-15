@@ -104,34 +104,15 @@ export default function HomePage() {
         <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-6 py-24 sm:py-28 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="relative mx-auto w-full max-w-[280px]">
             <div className="glow-royal pointer-events-none absolute h-72 w-72 -translate-x-6 -translate-y-6 blur-3xl" />
-            <div className="relative aspect-[2/3] w-full overflow-hidden rounded-lg bg-gradient-to-b from-[#1f3b64] via-[#16233d] to-[#0e1522] p-6 shadow-2xl shadow-black/40">
-              {/* Simple mountain-ridge silhouette — a nod to the real
-                  cover's photography, not a reproduction of it. */}
-              <svg
-                viewBox="0 0 280 420"
-                className="absolute inset-x-0 bottom-0 h-1/2 w-full opacity-25"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M0 420 L0 260 L50 180 L90 230 L140 100 L190 220 L230 160 L280 260 L280 420 Z"
-                  fill="#8a9a5b"
-                />
-              </svg>
-              <div className="relative flex h-full flex-col justify-between p-1 text-cream">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-gold-bright">
-                  Judah Becker
-                </p>
-                <div>
-                  <p className="font-display text-4xl uppercase leading-[0.9] tracking-tight">
-                    The<br />Path
-                  </p>
-                  <span className="mt-2 block text-xs uppercase tracking-[0.28em] text-gold-bright">
-                    Transformative Living
-                  </span>
-                </div>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-muted">Book One</p>
-              </div>
+            <div className="relative aspect-[2/3] w-full overflow-hidden rounded-lg shadow-2xl shadow-black/40">
+              <Image
+                src="/images/book-cover.jpg"
+                alt="The Path: Transformative Living, by Judah Becker — book cover"
+                fill
+                sizes="280px"
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
 
@@ -157,7 +138,7 @@ export default function HomePage() {
               )}
             </ul>
             <a
-              href="https://www.amazon.com/dp/B0HCFBDL13"
+              href="https://amzn.to/4h7nks"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-ink transition-colors hover:bg-gold-bright"

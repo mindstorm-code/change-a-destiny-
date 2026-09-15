@@ -1,0 +1,37 @@
+[
+  {
+    "id": "c001",
+    "first_name": "Casey",
+    "phone": "+15555550123",
+    "email": "casey@example.com",
+    "segment": "past_donor",
+    "sms_opt_in": false,
+    "suppressed": false,
+    "templateVars": {
+      "assessment_link": "https://change-a-destiny.vercel.app/#assessment",
+      "village_location": "Cambodia",
+      "testimony_quote": "\"I didn't think a monthly gift could actually change anything until I saw the co-op running itself.\" — a Victorious Villages partner since 2024",
+      "partnership_link": "https://change-a-destiny.vercel.app/#mission",
+      "unsubscribe_link": "https://change-a-destiny.vercel.app/unsubscribe?c=c001"
+    }
+  },
+  {
+    "id": "c002",
+    "first_name": "Jordan",
+    "phone": "+15555550456",
+    "email": "jordan@example.com",
+    "segment": "past_contact_no_giving",
+    "sms_opt_in": true,
+    "suppressed": false,
+    "templateVars": {
+      "assessment_link": "https://change-a-destiny.vercel.app/#assessment",
+      "testimony_quote": "\"The assessment named something I'd been avoiding for two years in about ninety seconds.\" — a Path Assessment reader",
+      "cohort_price_line": "Tiers run $497 to $1,497 depending on the level of live support.",
+      "cohort_link": "https://change-a-destiny.vercel.app/#cohort",
+      "close_date": "in 5 days",
+      "seats_remaining": "7",
+      "preferences_link": "https://change-a-destiny.vercel.app/preferences?c=c002",
+      "unsubscribe_link": "https://change-a-destiny.vercel.app/unsubscribe?c=c002"
+    }
+  }
+]
