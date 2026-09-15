@@ -3,6 +3,7 @@ import { Inter, Oswald } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
+import { LeadCapturePopup } from "@/components/LeadCapturePopup";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -52,6 +53,7 @@ export default function RootLayout({
         <NavBar />
         {children}
         <Footer />
+        <LeadCapturePopup />
       </body>
     </html>
   );
