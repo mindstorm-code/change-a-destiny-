@@ -2,25 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { Check, Loader2, X } from "lucide-react";
-
-/**
- * Posts to MSL Checkout's cross-origin lead-capture endpoint
- * (`POST /api/leads`) rather than a route in this repo — tenancy is resolved
- * there by the hostname the request arrives on, so this must point at
- * Change A Destiny's own MSL Checkout storefront host, not this site's own
- * domain. Overridable via env for whichever hostname is actually live.
- *
- * caportal.mindstormlabs.dev is a dedicated, newly-added hostname pointed at
- * the mslcheckout-customer (storefront) Vercel project specifically for
- * this — deliberately NOT change-a-destiny.mindstormlabs.dev or
- * cadash.mindstormlabs.dev, both of which are aliased to mslcheckout-client
- * (the seller/staff app) and left untouched. It has an
- * `organization_domains` row for Change A Destiny already, but still needs
- * one DNS record at the registrar before it resolves — see project notes.
- */
-const LEADS_ENDPOINT =
-  process.env.NEXT_PUBLIC_MSLCHECKOUT_LEADS_URL ??
-  "https://caportal.mindstormlabs.dev/api/leads";
+import { submitLead } from "@/lib/leads";
 
 const DISCLOSURE_REF = "cad-lead-popup-v1";
 const DISMISS_KEY = "cad-lead-popup-dismissed-at";
@@ -103,31 +85,25 @@ export function LeadCapturePopup() {
     setStatus("loading");
     setError(null);
 
-    try {
-      const res = await fetch(LEADS_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          consent: true,
-          disclosureRef: DISCLOSURE_REF,
-          source: "book-landing-popup",
-          campaign: "book-launch",
-        }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        setError(data.error ?? "Something went wrong. Try again.");
-        setStatus("error");
-        return;
-      }
-      setStatus("success");
-      localStorage.setItem(DISMISS_KEY, String(Date.now()));
-      window.setTimeout(close, 3000);
-    } catch {
-      setError("Couldn't reach the server. Check your connection and try again.");
+    const result = await submitLead({
+      email,
+      consent: true,
+      disclosureRef: DISCLOSURE_REF,
+      source: "book-landing-popup",
+      campaign: "book-launch",
+    });
+
+    if (!result.ok) {
+      setError(result.error);
       setStatus("error");
+      return;
     }
+
+    setStatus("success");
+    // Snoozes the popup on success as well as on dismissal, so somebody who
+    // subscribed is not asked again a fortnight later.
+    localStorage.setItem(DISMISS_KEY, String(Date.now()));
+    window.setTimeout(close, 3000);
   }
 
   if (!open) return null;

@@ -2,6 +2,28 @@
 
 import { useId, useState } from "react";
 import { Check, Loader2 } from "lucide-react";
+import { submitLead } from "@/lib/leads";
+
+/**
+ * The email capture under the cohort and assessment CTAs.
+ *
+ * ## Why this form gained a consent checkbox
+ *
+ * It used to post an address alone to `/api/waitlist`, which wrote a local
+ * JSON file — on a read-only serverless filesystem, so every submission
+ * returned 500 and nothing was ever stored. Repointing it at MSL Checkout's
+ * `/api/leads` is the fix, but that endpoint accepts `consent` only as
+ * literal `true` and records the result as evidence that a person agreed to
+ * be emailed.
+ *
+ * Sending `true` for a form that never asked would manufacture that evidence.
+ * The A2P campaign was rejected the first time over opt-in that could not be
+ * verified, so the honest fix is for the form to actually ask. The wording
+ * matches `LeadCapturePopup` because both now feed the same consent ledger and
+ * a reviewer comparing them should find one promise, not two.
+ */
+
+const DISCLOSURE_REF = "cad-reserve-seat-v1";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -17,33 +39,32 @@ export function ReserveSeatForm({
   placeholder?: string;
 }) {
   const [email, setEmail] = useState("");
+  const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
   const inputId = useId();
+  const consentId = useId();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (status === "loading" || status === "success") return;
+    if (status === "loading" || status === "success" || !consent) return;
     setStatus("loading");
     setError(null);
 
-    try {
-      const res = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error ?? "Something went wrong. Try again.");
-        setStatus("error");
-        return;
-      }
+    const result = await submitLead({
+      email,
+      consent: true,
+      disclosureRef: DISCLOSURE_REF,
+      source: `reserve-seat-${source}`,
+      campaign: "founding-cohort",
+    });
+
+    if (result.ok) {
       setStatus("success");
-    } catch {
-      setError("Couldn't reach the server. Check your connection and try again.");
-      setStatus("error");
+      return;
     }
+    setError(result.error);
+    setStatus("error");
   }
 
   if (status === "success") {
@@ -75,13 +96,38 @@ export function ReserveSeatForm({
         />
         <button
           type="submit"
-          disabled={status === "loading"}
-          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-ink transition-colors hover:bg-gold-bright disabled:opacity-70"
+          disabled={status === "loading" || !consent}
+          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-ink transition-colors hover:bg-gold-bright disabled:opacity-50"
         >
           {status === "loading" && <Loader2 size={15} className="animate-spin" />}
           {ctaLabel}
         </button>
       </div>
+
+      <label className="mt-3 flex items-start gap-2.5 text-xs leading-relaxed text-muted">
+        <input
+          id={consentId}
+          type="checkbox"
+          required
+          checked={consent}
+          onChange={(e) => setConsent(e.target.checked)}
+          className="mt-0.5 h-4 w-4 shrink-0 rounded border-hairline bg-ink accent-gold"
+        />
+        <span>
+          I&rsquo;d like to receive email updates from Change A Destiny.
+          We&rsquo;ll only use this for Path Assessment results and occasional
+          mission updates — no spam, unsubscribe anytime. See our{" "}
+          <a href="/privacy-policy" className="underline hover:text-cream">
+            Privacy Policy
+          </a>{" "}
+          and{" "}
+          <a href="/terms" className="underline hover:text-cream">
+            Terms
+          </a>
+          .
+        </span>
+      </label>
+
       {status === "error" && (
         <p id={`${inputId}-error`} className="mt-2 text-sm text-ember-bright" role="alert">
           {error}
