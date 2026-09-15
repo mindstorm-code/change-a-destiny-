@@ -27,8 +27,11 @@ history, and unknowns. Each gets a different first message.
 
 Under the TCPA, a list of 1,000 emails is not automatically 1,000 valid SMS
 opt-ins, even where Judah has met most of them in person. SMS only ever
-goes to contacts who explicitly opt in via Email 2's "reply YES for texts"
-step or an equivalent form. Everyone else stays on email. Build consent
+goes to contacts who explicitly opt in on the hosted opt-in page linked from
+Email 2 — a page with a mobile-number field and a consent box, which is what
+produces a record a carrier can verify. Reply-YES was the original mechanism
+and it is why the A2P Campaign was rejected on 2026-09-10 (error 30898): a
+reviewer cannot audit an inbox. Everyone else stays on email. Build consent
 capture and suppression into whichever platform is chosen *before* the
 first send goes out.
 

@@ -10,11 +10,17 @@ if wording changes.
 Required before any contact can receive Day 8/11 SMS — TCPA doesn't treat
 "we emailed 1,000 people once" as consent for texting them.
 
-> Prefer a text over digging through email? Reply **YES** to this email
-> and I'll send you a short nudge only when it's actually relevant — no
-> spam, unsubscribe anytime.
+> Prefer a text over digging through email? Opt in here:
+> {{sms_optin_link}} — I'll send you a short nudge only when it's actually
+> relevant, no spam, unsubscribe anytime.
 
-Reply-YES parsing and consent-flag writing now live at
+The link goes to MSL Checkout's hosted `/sms` page, which shows the full
+CTIA disclosure and writes an SMS consent event against this tenant. It has
+to be that page rather than a form on this site: `/api/leads` records EMAIL
+consent only and deliberately refuses to read a phone number beside an email
+checkbox as permission to text.
+
+STOP handling still matters and lives at
 `src/app/api/sms/inbound/route.ts` — verifies Twilio's request signature,
 flips `sms_opt_in` on YES, sets `suppressed` on STOP. Point the Messaging
 Service's inbound-message webhook at this route once one exists.

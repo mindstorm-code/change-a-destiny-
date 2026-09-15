@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Kicker } from "@/components/ui";
+import { SMS_OPTIN_URL } from "@/lib/leads";
 
 export const metadata: Metadata = {
   title: "Terms and Conditions | The Path: Transformative Living",
@@ -35,10 +36,16 @@ export default function TermsPage() {
             SMS Program: The Path Updates
           </h2>
           <p className="mt-3">
-            <strong className="text-cream">Program description:</strong> By
-            replying YES to an email from us, you opt in to receive text
-            messages from Change A Destiny about the Path Assessment, the
-            Founding Cohort course, and our Victorious Villages mission.
+            <strong className="text-cream">Program description:</strong> You
+            opt in on our{" "}
+            <a href={SMS_OPTIN_URL} className="underline hover:text-cream">
+              text updates page
+            </a>
+            , by entering your mobile number and ticking the consent box
+            shown there. You will then receive text messages from Change A
+            Destiny about the Path Assessment, the Founding Cohort course,
+            and our Victorious Villages mission. We never add a number to
+            this program from an email, a donation, or a purchase.
           </p>
           <p className="mt-3">
             <strong className="text-cream">Message frequency:</strong>{" "}

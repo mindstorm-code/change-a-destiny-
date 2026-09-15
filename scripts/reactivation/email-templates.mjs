@@ -34,13 +34,16 @@ const ASSESSMENT_OPTIN_BODY =
   "are.\n\n" +
   "Take the Path Assessment: {{assessment_link}}\n\n" +
   "One more thing — if you'd rather get a quick text than dig through " +
-  "email, reply YES to this email to opt in to \"The Path Updates,\" " +
-  "occasional SMS from Change A Destiny about the Path Assessment, the " +
+  "email, you can opt in to \"The Path Updates\" here: " +
+  "{{sms_optin_link}}\n\n" +
+  "That page asks for your mobile number and has you tick a consent box, " +
+  "which is how we keep a record that you actually asked for the texts. " +
+  "Occasional SMS from Change A Destiny about the Path Assessment, the " +
   "Founding Cohort, and our Victorious Villages mission. Message " +
   "frequency varies — no more than a few messages over a typical " +
   "two-week period. Msg & data rates may apply. This isn't required to " +
-  "stay on our email list or to give — reply YES only if you actually " +
-  "want the texts. Reply STOP at any time to opt out.\n\nJudah" +
+  "stay on our email list or to give. Reply STOP at any time to opt " +
+  "out.\n\nJudah" +
   FOOTER;
 
 const PROOF_DONOR_BODY =
