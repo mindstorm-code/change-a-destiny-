@@ -29,6 +29,28 @@ export const LEADS_ENDPOINT =
   process.env.NEXT_PUBLIC_MSLCHECKOUT_LEADS_URL ??
   "https://caportal.mindstormlabs.dev/api/leads";
 
+/**
+ * Where a visitor opts in to SMS.
+ *
+ * Not a page in this repo, and it cannot be: MSL Checkout's `/api/leads`
+ * records EMAIL consent only, and refuses on principle to read a phone number
+ * beside an email checkbox as permission to text. Real SMS consent has to be
+ * collected by MSL Checkout's own `/sms` page, which shows the CTIA disclosure
+ * and writes an SMS consent event against this tenant.
+ *
+ * It is linked from this site's footer on purpose. The A2P 10DLC filing has to
+ * give carriers an opt-in URL, and the one available today sits on
+ * `mslcheckout.vercel.app` rather than the brand's own domain. A reviewer who
+ * can walk from Change A Destiny's website to that page can satisfy themselves
+ * the brand controls it; with no link at all it reads as an unrelated vendor,
+ * which is how a campaign gets rejected twice.
+ *
+ * Env-overridable so moving to a `changeadestiny.org` subdomain later is a
+ * configuration change and not a deploy of this file.
+ */
+export const SMS_OPTIN_URL =
+  process.env.NEXT_PUBLIC_SMS_OPTIN_URL ?? "https://mslcheckout.vercel.app/sms";
+
 export type LeadSubmission = {
   readonly email: string;
   /** Must reflect a real affirmative action. The endpoint refuses anything
