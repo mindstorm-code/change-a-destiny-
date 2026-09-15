@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SMS_OPTIN_URL } from "@/lib/leads";
 
 export function Footer() {
   return (
@@ -30,6 +31,14 @@ export function Footer() {
         <nav className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted/70">
           <Link href="/privacy-policy" className="hover:text-cream">Privacy Policy</Link>
           <Link href="/terms" className="hover:text-cream">Terms and Conditions</Link>
+          <a
+            href={SMS_OPTIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-cream"
+          >
+            Text updates &#8599;
+          </a>
         </nav>
         <p className="mt-6 text-xs text-muted/60">
           Figures on this page are planning estimates for launch purposes, not guarantees.
