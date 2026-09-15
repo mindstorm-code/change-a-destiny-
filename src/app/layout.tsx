@@ -22,10 +22,35 @@ const title = "The Path: Transformative Living | Judah Becker";
 const description =
   "A framework where clinical counseling and Hebrew-rooted faith meet — the book, the Founding Cohort course, and the mission it points toward.";
 
+/**
+ * Absolute base the relative `images` below are resolved against.
+ *
+ * This shipped as a bare `http://localhost:3220` fallback, and production used
+ * it — the project had no environment variables set at all — so every social
+ * share of this page carried an `og:image` pointing at a developer's laptop.
+ * Nothing fails when that is wrong: the build passes, the page renders, and the
+ * broken preview is invisible unless somebody actually shares the link.
+ *
+ * So the fallback is now a chain that lands somewhere real on its own.
+ * `VERCEL_PROJECT_PRODUCTION_URL` is supplied automatically on every Vercel
+ * deployment (this project has System Environment Variables enabled), which
+ * means a fresh deploy is correct without anyone remembering to set a variable.
+ * `NEXT_PUBLIC_SITE_URL` still wins when set, so the canonical domain can be
+ * pinned; localhost remains only as the local-development case it was always
+ * meant to be.
+ */
+function siteUrl(): string {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
+  if (explicit) return explicit;
+
+  const vercel = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  if (vercel) return `https://${vercel}`;
+
+  return "http://localhost:3220";
+}
+
 export const metadata: Metadata = {
-  // Swap for the real production domain before launch — needed for social
-  // preview images to resolve to absolute URLs.
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3220"),
+  metadataBase: new URL(siteUrl()),
   title,
   description,
   openGraph: {
