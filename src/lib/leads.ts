@@ -30,26 +30,67 @@ export const LEADS_ENDPOINT =
   "https://caportal.mindstormlabs.dev/api/leads";
 
 /**
- * Where a visitor opts in to SMS.
+ * Where a visitor opts in to SMS — now a page on this site.
  *
- * Not a page in this repo, and it cannot be: MSL Checkout's `/api/leads`
- * records EMAIL consent only, and refuses on principle to read a phone number
- * beside an email checkbox as permission to text. Real SMS consent has to be
- * collected by MSL Checkout's own `/sms` page, which shows the CTIA disclosure
- * and writes an SMS consent event against this tenant.
+ * It used to point at MSL Checkout's own hosted `/sms`. That page works, but
+ * it sits on the platform's hostname, and a carrier reviewing an A2P Campaign
+ * checks that the opt-in page belongs to the brand being registered. A form on
+ * a software vendor's domain reads as an unrelated vendor's form — on a Brand
+ * at 16/100 already rejected once over opt-in information, that was the
+ * largest remaining risk in the filing.
  *
- * It is linked from this site's footer on purpose. The A2P 10DLC filing has to
- * give carriers an opt-in URL, and the one available today sits on
- * `mslcheckout.vercel.app` rather than the brand's own domain. A reviewer who
- * can walk from Change A Destiny's website to that page can satisfy themselves
- * the brand controls it; with no link at all it reads as an unrelated vendor,
- * which is how a campaign gets rejected twice.
- *
- * Env-overridable so moving to a `changeadestiny.org` subdomain later is a
- * configuration change and not a deploy of this file.
+ * So the page lives here instead, beside this site's own privacy policy and
+ * terms, and posts to `SMS_OPTIN_ENDPOINT` below. Relative on purpose: the
+ * footer and the terms page link to it, and it should follow whatever domain
+ * this site is served from rather than hardcoding one.
  */
-export const SMS_OPTIN_URL =
-  process.env.NEXT_PUBLIC_SMS_OPTIN_URL ?? "https://mslcheckout.vercel.app/sms";
+export const SMS_OPTIN_URL = "/sms";
+
+/**
+ * Where that form POSTs. Not a route in this repo, and it cannot be.
+ *
+ * MSL Checkout resolves which tenant a consent record belongs to from the
+ * hostname the request arrives on, and the SMS consent ledger lives there. It
+ * is a different endpoint from `LEADS_ENDPOINT` on purpose: `/api/leads`
+ * writes EMAIL consent and deliberately refuses to read a phone beside an
+ * email checkbox as permission to text. `/api/sms-optin` is the other case —
+ * a dedicated SMS form showing the SMS disclosure — and writes `channel: sms`.
+ *
+ * The consent evidence records the Origin this request came from, which is why
+ * hosting the form here improves the filing rather than merely moving it.
+ */
+export const SMS_OPTIN_ENDPOINT =
+  process.env.NEXT_PUBLIC_MSLCHECKOUT_SMS_OPTIN_URL ??
+  "https://mslcheckout.vercel.app/api/sms-optin";
+
+export type SmsOptInSubmission = {
+  readonly phone: string;
+  /** Must reflect a real tick of a box whose only meaning is "text me". The
+   *  endpoint refuses anything but literal `true`. */
+  readonly consent: true;
+  readonly name?: string;
+  readonly disclosureRef: string;
+};
+
+export async function submitSmsOptIn(optIn: SmsOptInSubmission): Promise<LeadResult> {
+  try {
+    const res = await fetch(SMS_OPTIN_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(optIn),
+    });
+    const data = (await res.json().catch(() => ({}))) as { error?: string };
+    if (!res.ok) {
+      return { ok: false, error: data.error ?? "Something went wrong. Try again." };
+    }
+    return { ok: true };
+  } catch {
+    return {
+      ok: false,
+      error: "Couldn't reach the server. Check your connection and try again.",
+    };
+  }
+}
 
 export type LeadSubmission = {
   readonly email: string;
