@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Kicker } from "@/components/ui";
-import { SmsOptInForm } from "@/components/SmsOptInForm";
+import { OptInForm } from "@/components/OptInForm";
 
 /**
  * The opt-in page named in the A2P 10DLC Campaign filing.
@@ -33,14 +33,15 @@ export default function SmsOptInPage() {
       </h1>
 
       <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-        Occasional text messages from Change A Destiny about the Path
-        Assessment, the Founding Cohort course, and our Victorious Villages
-        mission. A few messages at most over a two-week period — never more
-        than that, and never a number we bought or guessed.
+        Updates from Change A Destiny about the Path Assessment, the Founding
+        Cohort course, and our Victorious Villages mission. Choose email,
+        texts, or both — they are separate choices, and you can take either one
+        without the other. A few messages at most over a two-week period, and
+        never a number or address we bought or guessed.
       </p>
 
       <div className="mt-10">
-        <SmsOptInForm />
+        <OptInForm />
       </div>
 
       <section className="mt-12 space-y-4 text-xs leading-relaxed text-muted/80">
