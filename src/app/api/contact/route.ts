@@ -4,7 +4,7 @@ import { Resend } from "resend";
 // Where a contact-page message lands. Overridable per-environment; falls
 // back to the same inbox already published as the contact address on the
 // Privacy Policy and Terms pages.
-const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "changeadestiny.org@gmail.com";
+const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "judah@changeadestiny.org";
 
 const MAX_LEN = { name: 200, email: 254, phone: 40, message: 5000 };
 

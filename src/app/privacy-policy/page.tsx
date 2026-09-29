@@ -224,10 +224,10 @@ export default function PrivacyPolicyPage() {
             <br />
             Email:{" "}
             <a
-              href="mailto:changeadestiny.org@gmail.com"
+              href="mailto:judah@changeadestiny.org"
               className="underline hover:text-cream"
             >
-              changeadestiny.org@gmail.com
+              judah@changeadestiny.org
             </a>
             <br />
             Website:{" "}
