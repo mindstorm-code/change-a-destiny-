@@ -36,8 +36,8 @@ export default function SmsOptInPage() {
         Updates from Change A Destiny about the Path Assessment, the Founding
         Cohort course, and our Victorious Villages mission. Choose email,
         texts, or both — they are separate choices, and you can take either one
-        without the other. Up to one message per day, and never a number or
-        address we bought or guessed.
+        without the other. A few messages at most over a two-week period, and
+        never a number or address we bought or guessed.
       </p>
 
       <div className="mt-10">
@@ -54,8 +54,9 @@ export default function SmsOptInPage() {
           (EIN 35-2380335).
         </p>
         <p>
-          <strong className="text-cream">Message frequency:</strong> Varies.
-          You may receive up to one message per day.
+          <strong className="text-cream">Message frequency:</strong> Varies. No
+          more than a few messages over a typical two-week period, and
+          occasional messages afterward.
         </p>
         <p>
           <strong className="text-cream">Cost:</strong> Message and data rates

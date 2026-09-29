@@ -61,7 +61,9 @@ export default function TermsPage() {
           </p>
           <p className="mt-3">
             <strong className="text-cream">Message frequency:</strong>{" "}
-            Frequency varies. You may receive up to one message per day.
+            Frequency varies. You should expect no more than a few messages
+            over a typical two-week period, and occasional messages
+            afterward.
           </p>
           <p className="mt-3">
             <strong className="text-cream">Message and data rates may apply.</strong>{" "}
@@ -215,8 +217,8 @@ export default function TermsPage() {
           </ul>
           <p className="mt-3">
             <strong className="text-cream">Message Frequency:</strong>{" "}
-            Message frequency varies. You may receive up to one message per
-            day.
+            Message frequency varies. You may receive up to 10 messages per
+            month.
           </p>
           <p className="mt-3">
             <strong className="text-cream">Message and Data Rates:</strong>{" "}

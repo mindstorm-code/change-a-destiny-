@@ -73,9 +73,9 @@ export default function PrivacyPolicyPage() {
             SMS communications
           </h2>
           <p className="mt-3">
-            If you opt in to text messages, message frequency varies — you may
-            receive up to one message per day. Message and data rates may
-            apply. Reply{" "}
+            If you opt in to text messages, message frequency varies (typically
+            no more than a few messages over a two-week period, and periodically
+            afterward). Message and data rates may apply. Reply{" "}
             <strong className="text-cream">HELP</strong> for help or{" "}
             <strong className="text-cream">STOP</strong> to cancel at any time —
             see our{" "}
@@ -126,8 +126,8 @@ export default function PrivacyPolicyPage() {
           </ul>
           <p className="mt-3">
             <strong className="text-cream">Message Frequency:</strong>{" "}
-            Message frequency varies. You may receive up to one message per
-            day.
+            Message frequency varies. You may receive up to 10 messages per
+            month.
           </p>
           <p className="mt-3">
             <strong className="text-cream">Message and Data Rates:</strong>{" "}
