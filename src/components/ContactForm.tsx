@@ -265,10 +265,11 @@ export function ContactForm() {
           <span>
             Yes, I agree to receive marketing and promotional text messages from The Path
             at the phone number provided above. I understand that message frequency
-            varies based on my account activity and inquiries, and that message and
-            data rates may apply. I acknowledge that my consent is not a condition of
-            any purchase or service. I can reply STOP to unsubscribe at any time and
-            HELP for assistance.
+            varies based on my account activity and inquiries, and that{" "}
+            <strong className="text-cream">message and data rates may apply</strong>. I
+            acknowledge that my consent is not a condition of any purchase or service. I
+            can reply <strong className="text-cream">STOP</strong> to unsubscribe at any
+            time and <strong className="text-cream">HELP</strong> for assistance.
           </span>
         </label>
         {smsConsent && !phone.trim() && (
