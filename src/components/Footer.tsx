@@ -29,6 +29,7 @@ export function Footer() {
           </nav>
         </div>
         <nav className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted/70">
+          <Link href="/contact" className="hover:text-cream">Contact</Link>
           <Link href="/privacy-policy" className="hover:text-cream">Privacy Policy</Link>
           <Link href="/terms" className="hover:text-cream">Terms and Conditions</Link>
           <a
