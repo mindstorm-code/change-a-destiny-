@@ -73,10 +73,10 @@ export default function SmsOptInPage() {
           <strong className="text-cream">Help:</strong> Reply{" "}
           <strong className="text-cream">HELP</strong> to any message, or email{" "}
           <a
-            href="mailto:changeadestiny.org@gmail.com"
+            href="mailto:judah@changeadestiny.org"
             className="underline hover:text-cream"
           >
-            changeadestiny.org@gmail.com
+            judah@changeadestiny.org
           </a>
           .
         </p>
