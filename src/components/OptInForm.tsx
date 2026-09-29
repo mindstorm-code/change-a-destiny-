@@ -196,8 +196,8 @@ export function OptInForm() {
         />
         <span>
           Yes, text me updates from <strong className="text-cream">The Path Updates</strong>{" "}
-          by Change A Destiny at the number above. Message frequency varies, no
-          more than a few messages per two weeks. Message and data rates may
+          by Change A Destiny at the number above. Message frequency varies,
+          up to one message per day. Message and data rates may
           apply. Reply STOP to opt out, HELP for help. Consent is not a
           condition of any donation or purchase. See our{" "}
           <a href="/terms" className="underline hover:text-cream">
