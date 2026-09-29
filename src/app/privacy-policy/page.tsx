@@ -91,12 +91,15 @@ export default function PrivacyPolicyPage() {
             Children&rsquo;s Privacy
           </h2>
           <p className="mt-3">
-            Our Services do not target children under 13. We do not knowingly
-            collect information from children under this age. We will
-            investigate any notification and if appropriate, delete the
-            Personal Information from our systems. If you are 13 or older,
-            but under 18, you must have permission from your parent or
-            guardian to use our Services.
+            Our Services are intended only for users who are at least 18
+            years of age, consistent with the Eligibility requirement in our{" "}
+            <a href="/terms" className="underline hover:text-cream">
+              Terms and Conditions
+            </a>
+            . We do not target children or knowingly collect information
+            from anyone under 18. If we learn that we have collected
+            Personal Information from someone under 18, we will investigate
+            and, if appropriate, delete that information from our systems.
           </p>
         </section>
 
