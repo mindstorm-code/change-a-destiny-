@@ -52,6 +52,14 @@ export function NavBar() {
               Curriculum
             </Link>
           )}
+          {pathname !== "/contact" && (
+            <Link
+              href="/contact"
+              className="text-sm text-muted transition-colors hover:text-cream"
+            >
+              Contact
+            </Link>
+          )}
           <Link
             href="/#cohort"
             className="rounded-full border border-gold/40 px-5 py-2 text-sm font-medium text-gold-bright transition-colors hover:bg-gold hover:text-ink"
@@ -88,6 +96,13 @@ export function NavBar() {
             className="rounded-lg px-2 py-3 text-sm text-muted hover:bg-dusk-soft hover:text-cream"
           >
             Curriculum
+          </Link>
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            className="rounded-lg px-2 py-3 text-sm text-muted hover:bg-dusk-soft hover:text-cream"
+          >
+            Contact
           </Link>
         </nav>
       )}
