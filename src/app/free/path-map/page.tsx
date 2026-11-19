@@ -36,7 +36,7 @@ const INSIDE = [
 
 export default function PathMapPage() {
   return (
-    <main className="bg-grain">
+    <main className="bg-grain overflow-x-clip">
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-20 pt-8 md:grid-cols-[1.15fr_0.85fr] md:pt-14">
         <div>
           <Kicker>Free workbook · 10 pages</Kicker>
