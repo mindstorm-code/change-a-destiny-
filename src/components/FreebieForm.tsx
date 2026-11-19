@@ -44,15 +44,21 @@ export function FreebieForm({
   downloadHref,
   downloadFileName,
   ctaLabel,
+  successNote,
 }: {
   disclosureRef: string;
   source: string;
   campaign: string;
+  /** With a download: the asset's name. Without: what they signed up for. */
   assetName: string;
-  downloadHref: string;
-  downloadFileName: string;
+  /** Omit both download props for an interest list (no file to hand over). */
+  downloadHref?: string;
+  downloadFileName?: string;
   ctaLabel: string;
+  /** Shown on success when there is no download. */
+  successNote?: string;
 }) {
+  const hasDownload = Boolean(downloadHref);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -71,7 +77,8 @@ export function FreebieForm({
     if (canSubmit) return null;
     if (!trimmed.name) return "Add your name to continue.";
     if (!trimmed.email) return "Add your email address to continue.";
-    if (!emailConsent) return "Tick the email box to get the download.";
+    if (!emailConsent)
+      return hasDownload ? "Tick the email box to get the download." : "Tick the email box to continue.";
     if (smsMissingPhone) return "Add your mobile number, or untick the text box.";
     return null;
   }
@@ -114,15 +121,20 @@ export function FreebieForm({
     return (
       <div className="rounded-2xl border border-gold/30 bg-gold/10 p-6" role="status">
         <p className="flex items-center gap-2 text-sm text-gold-bright">
-          <Check size={16} /> You&rsquo;re in, {trimmed.name.split(" ")[0]}. Here&rsquo;s {assetName}.
+          <Check size={16} /> You&rsquo;re in, {trimmed.name.split(" ")[0]}.
+          {hasDownload ? <> Here&rsquo;s {assetName}.</> : <> You&rsquo;re on the {assetName} list.</>}
         </p>
-        <a
-          href={downloadHref}
-          download={downloadFileName}
-          className="mt-4 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-ink transition-colors hover:bg-gold-bright"
-        >
-          <Download size={16} /> Download the PDF
-        </a>
+        {hasDownload ? (
+          <a
+            href={downloadHref}
+            download={downloadFileName}
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-ink transition-colors hover:bg-gold-bright"
+          >
+            <Download size={16} /> Download the PDF
+          </a>
+        ) : (
+          successNote && <p className="mt-3 text-sm leading-relaxed text-cream/90">{successNote}</p>
+        )}
         {smsResult === "on" && (
           <p className="mt-3 text-xs text-muted">
             Texts are on too. Reply STOP to any message to opt out, or HELP for help.
@@ -230,7 +242,7 @@ export function FreebieForm({
           by Change A Destiny at the number above. Message frequency varies, no
           more than a few messages per two weeks. Message and data rates may
           apply. Reply STOP to opt out, HELP for help. Consent is not a
-          condition of this download or any donation or purchase.
+          condition of {hasDownload ? "this download or " : ""}any donation or purchase.
         </span>
       </label>
 

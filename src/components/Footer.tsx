@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { SMS_OPTIN_URL } from "@/lib/leads";
+import { SISTER_SITES } from "@/lib/sites";
+import { useSite } from "@/lib/useSite";
 
 export function Footer() {
+  const { mainHref } = useSite();
   return (
     <footer className="border-t border-hairline bg-ink">
       <div className="mx-auto max-w-6xl px-6 py-12 text-sm text-muted">
@@ -14,10 +19,10 @@ export function Footer() {
             </p>
           </div>
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-xs">
-            <Link href="/#book" className="hover:text-cream">The Book</Link>
-            <Link href="/#cohort" className="hover:text-cream">The Course</Link>
-            <Link href="/#mission" className="hover:text-cream">The Mission</Link>
-            <Link href="/course" className="hover:text-cream">Curriculum</Link>
+            <Link href={mainHref("/#book")} className="hover:text-cream">The Book</Link>
+            <Link href={mainHref("/#cohort")} className="hover:text-cream">The Course</Link>
+            <Link href={mainHref("/#mission")} className="hover:text-cream">The Mission</Link>
+            <Link href={mainHref("/course")} className="hover:text-cream">Curriculum</Link>
             <a
               href="https://changeadestiny.org"
               target="_blank"
@@ -28,6 +33,13 @@ export function Footer() {
             </a>
           </nav>
         </div>
+        <nav aria-label="Change A Destiny sites" className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs">
+          {Object.values(SISTER_SITES).map((s) => (
+            <Link key={s.route} href={mainHref(s.route)} className="hover:text-cream">
+              {s.label}
+            </Link>
+          ))}
+        </nav>
         <nav className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted/70">
           <Link href="/contact" className="hover:text-cream">Contact</Link>
           <Link href="/privacy-policy" className="hover:text-cream">Privacy Policy</Link>
