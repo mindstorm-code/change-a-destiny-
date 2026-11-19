@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useSite } from "@/lib/useSite";
 
 const ANCHORS = [
   { href: "/#book", label: "The Book" },
@@ -15,6 +16,7 @@ export function NavBar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { mainHref } = useSite();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -30,7 +32,7 @@ export function NavBar() {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <Link href="/" className="flex items-baseline gap-2" onClick={() => setOpen(false)}>
+        <Link href={mainHref("/")} className="flex items-baseline gap-2" onClick={() => setOpen(false)}>
           <span className="font-display text-xl uppercase tracking-wide text-cream">The Path</span>
         </Link>
 
@@ -38,7 +40,7 @@ export function NavBar() {
           {ANCHORS.map((l) => (
             <Link
               key={l.href}
-              href={l.href}
+              href={mainHref(l.href)}
               className="text-sm text-muted transition-colors hover:text-cream"
             >
               {l.label}
@@ -46,7 +48,7 @@ export function NavBar() {
           ))}
           {pathname !== "/course" && (
             <Link
-              href="/course"
+              href={mainHref("/course")}
               className="text-sm text-muted transition-colors hover:text-cream"
             >
               Curriculum
@@ -61,7 +63,7 @@ export function NavBar() {
             </Link>
           )}
           <Link
-            href="/#cohort"
+            href={mainHref("/#cohort")}
             className="rounded-full border border-gold/40 px-5 py-2 text-sm font-medium text-gold-bright transition-colors hover:bg-gold hover:text-ink"
           >
             Reserve a seat
@@ -83,7 +85,7 @@ export function NavBar() {
           {ANCHORS.map((l) => (
             <Link
               key={l.href}
-              href={l.href}
+              href={mainHref(l.href)}
               onClick={() => setOpen(false)}
               className="rounded-lg px-2 py-3 text-sm text-muted hover:bg-dusk-soft hover:text-cream"
             >
@@ -91,7 +93,7 @@ export function NavBar() {
             </Link>
           ))}
           <Link
-            href="/course"
+            href={mainHref("/course")}
             onClick={() => setOpen(false)}
             className="rounded-lg px-2 py-3 text-sm text-muted hover:bg-dusk-soft hover:text-cream"
           >

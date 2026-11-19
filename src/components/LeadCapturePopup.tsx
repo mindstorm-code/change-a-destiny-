@@ -4,6 +4,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Check, Loader2, X } from "lucide-react";
 import { submitLead } from "@/lib/leads";
+import { useSite } from "@/lib/useSite";
 
 const DISCLOSURE_REF = "cad-lead-popup-v1";
 const DISMISS_KEY = "cad-lead-popup-dismissed-at";
@@ -36,8 +37,10 @@ export function LeadCapturePopup() {
   const pathname = usePathname();
   // Squeeze pages under /free already ask for exactly one email. A second
   // ask popping over them is the split-attention problem offer-stack.md
-  // calls out, so the popup stays off those pages.
-  const onSqueezePage = pathname?.startsWith("/free") ?? false;
+  // calls out, so the popup stays off those pages. The sister sites (courses,
+  // faithcations, ministry) each have their own sign-up form, so the same rule.
+  const { site } = useSite();
+  const onSqueezePage = (pathname?.startsWith("/free") ?? false) || site !== null;
 
   useEffect(() => {
     if (onSqueezePage || !shouldOffer()) return;
