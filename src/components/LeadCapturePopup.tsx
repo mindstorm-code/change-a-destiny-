@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Check, Loader2, X } from "lucide-react";
 import { submitLead } from "@/lib/leads";
 
@@ -32,15 +33,20 @@ export function LeadCapturePopup() {
   const inputId = useId();
   const consentId = useId();
   const titleId = useId();
+  const pathname = usePathname();
+  // Squeeze pages under /free already ask for exactly one email. A second
+  // ask popping over them is the split-attention problem offer-stack.md
+  // calls out, so the popup stays off those pages.
+  const onSqueezePage = pathname?.startsWith("/free") ?? false;
 
   useEffect(() => {
-    if (!shouldOffer()) return;
+    if (onSqueezePage || !shouldOffer()) return;
     const timer = window.setTimeout(() => {
       sessionStorage.setItem(SHOWN_KEY, "1");
       setOpen(true);
     }, SHOW_DELAY_MS);
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [onSqueezePage]);
 
   const close = useCallback(() => {
     setOpen(false);

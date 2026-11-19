@@ -102,6 +102,10 @@ export type LeadSubmission = {
   readonly disclosureRef: string;
   readonly source: string;
   readonly campaign?: string;
+  readonly name?: string;
+  /** Stored on the contact only. The endpoint never reads it as permission to
+   *  text; that takes a separate `submitSmsOptIn`. */
+  readonly phone?: string;
 };
 
 export type LeadResult = { ok: true } | { ok: false; error: string };
